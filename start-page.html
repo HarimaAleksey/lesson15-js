@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie example</title>
+    <script src="jquery-3.6.1.min.js"></script>
+    <script src="jquery-cookie.js"></script>
+</head>
+<body>
+    <input type="text">
+    <a href="end-page.html">Вторая страница</a>
+    <script>
+        // $(function () {}) - входная точка jQuery, т.е. ф-я начнет свое выполнение при полной загрузки страницы
+        $(function() {
+            const $input = $('input[type=text]');
+            // добавление слушателя в jQuery (аналог addEventListener)
+            $input.on('blur', function() {
+                let $myCity = $input.val(); // значение атрибута value
+                // $.cookie('city', $myCity); // создаем куки с именем city и введенным значением, сессионная куки
+                $.cookie('city', $myCity, { expires: 1 / 24}); // куки на час
+                // $.cookie('city'); // чтение значения куки
+                // $.removeCookie('city'); // удаляем куки по имени
+            });
+        });
+    </script>
+</body>
+
+</html>

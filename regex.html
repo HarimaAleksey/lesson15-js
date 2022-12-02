@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регулярные выражения</title>
+</head>
+<body>
+    <form action="" method="get" onsubmit="sendForm(event)">
+        <input type="text" 
+            name="first_name" 
+            placeholder="Введите имя" 
+            required 
+            autofocus
+            autocomplete="off"
+            pattern="^.{2,13}$"
+        >
+        <input type="email" name="email" placeholder="Введите почту" required>
+        <input type="submit">
+    </form>
+
+    <script>
+        function sendForm(event) {
+            event.preventDefault();
+            
+        }
+    </script>
+</body>
+</html>
