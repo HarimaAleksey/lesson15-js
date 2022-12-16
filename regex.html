@@ -7,8 +7,8 @@
     <title>Регулярные выражения</title>
 </head>
 <body>
-    <form action="" method="get" onsubmit="sendForm(event)">
-        <input type="text" 
+    <form action="" method="get" onsubmit="sendForm(event, this)">
+        <!-- <input type="text" 
             name="first_name" 
             placeholder="Введите имя" 
             required 
@@ -16,15 +16,76 @@
             autocomplete="off"
             pattern="^.{2,13}$"
         >
-        <input type="email" name="email" placeholder="Введите почту" required>
+        <input type="text" 
+            name="second_name" 
+            placeholder="Введите фамилию"
+            required
+            pattern="^[a-zA-Zа-яА-Я]+$"
+        > -->
+        <!-- <input 
+            type="email"
+            name="email" 
+            placeholder="Введите почту" 
+            required         
+        > -->
+        <input type="text" name="test">   
+
         <input type="submit">
     </form>
 
     <script>
-        function sendForm(event) {
+        function sendForm(event, ctx) {
             event.preventDefault();
+            // пример построения регулярки на Js
+            // const regEx = /pattern/g;
+            // const regExConstructor = new RegExp(pattern, 'g');
+            // Флаги:
+            // g - global, позволяет искать по всему тексту не останавливаясь после первого назождения
+            // i - используется для поиска без учета регистра
+            // m - исп. для многострочного поиска
+            // u - исп. для поиска unicode
+
+            // метод test возвращает true в случае совпадения регулярки и в противном  false 
+            // alert(/me+(ow)+/.test(ctx.elements[0].value));
+            // alert(/cats? says?/i.test(ctx.elements[0].value));
+
+            // метод match() возвращает получившиеся совпадения при сопоставлении строки с регулярным выражением.
+            // console.log(ctx.elements[0].value.match(/Hello/gi));
+
+            const textInputValue = document.querySelector('input[name="test"]').value;
+            // alert(/.{1,32}@(gmail\.com|yandex\.ru)/.test(textInputValue));
+
+            // Задача: проверить, является ли значение числом с плавающей точкой/запятой
+            // const delimiter = prompt('Введите разделитель . или ,', '.')
+            // alert(numeric(delimiter).test(textInputValue));
+
+
             
         }
+
+        // Задача: изменять формат(ISO) записи даты
+        // const changedDate = '23.11.2022'.replace(/^(\d{2})\.(\d{2})\.(\d{4})$/, '$3-$2-$1');
+        // console.log(changedDate);
+            
+        // ?= вперед смотрящее
+        /Блюдо(?=11)/.test('Блюдо1'); // false
+        /Блюдо(?=11)/.test('Блюдо11'); // true
+        /Блюдо(?=11)/.test('Блюдо511'); // false
+
+        console.log('Блюдо11'.match(/Блюдо(?=11)/)); // Показать лучше этот пример, учитывая работающую кириллицу
+
+        // пример с кириллицей
+        // const regExpStr = 'Есть миг29а, ту154б';
+        // const regExpStr2 = 'Ebnc gf29f, eq154a';
+
+        // const regExp = new RegExp(/(?:\D\D)+/);
+
+        // const regExpLiteral = new RegExp(/(?:\p{sc=Cyrillic}\p{sc=Cyrillic}\d\d)+/, 'u');
+        // console.log(regExpStr.match(regExpLiteral));
+
+        // const numeric = (delimiter = '.') => {
+        //     return new RegExp(`^[+-]?([0-9]*\\${delimiter})?[0-9]+$`)
+        // }
     </script>
 </body>
 </html>
